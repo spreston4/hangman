@@ -25,12 +25,13 @@ const guessesRemainingCont = $('#remaining-guesses-container');
 const resultsCont = $('#results-container');
 const resetCont = $('#reset-game-container');
 const showButtonEl = $('#show-button');
+const resetButtonEl = $('#play-again');
 const welcomeCont = $('#welcome-container');
 const playButtonEl = $('#start-button');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
-
+    
     // Get random word from 'wordPool'
     selectedWord = arr[Math.floor(Math.random() * arr.length)].toUpperCase().split('');
 
@@ -43,6 +44,8 @@ const getWord = arr => {
     renderWord(displayArray);
 
     console.log(selectedWord);
+    console.log(guessedLetterArray);
+    console.log(displayArray);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
@@ -173,7 +176,30 @@ const startGame = () => {
     toggleVisibility(guessesRemainingCont);
     toggleVisibility(guessedLettersCont);
 
-    // Get word
+    // Start Game
+    getWord(wordPool);
+}
+
+// Function 'resetGame' restarts the game
+const resetGame = () => {
+    // Reset Variables
+    guessCount = 10;
+    displayArray.length = 0;
+    selectedWord.length = 0;
+    guessedLetterArray.length = 0;
+    
+    // Toggle correct containers
+    toggleVisibility(submitFormCont);
+    toggleVisibility(guessedLettersCont);
+    toggleVisibility(guessesRemainingCont);
+    toggleVisibility(resetCont);
+    toggleVisibility(resultsCont);
+
+    // Reset HTML
+    renderGuesses(guessedLetterArray);
+    renderRemaining(guessCount)
+
+    // Start Game
     getWord(wordPool);
 }
 
@@ -187,4 +213,5 @@ const startGame = () => {
 // Listener
 playButtonEl.click(startGame);
 submitLetterEl.click(guessLetter);
+resetButtonEl.click(resetGame);
 
