@@ -18,6 +18,11 @@ const guessLetterEl = $('#guess-letter');      // Form Input (future delete)
 const submitLetterEl = $('#submit-letter');    // Form Submit Button (future delete)
 const guessedLettersEl = $('#guessed-letters');
 const guessesRemainingEl = $('#remaining-guesses');
+const submitFormCont = $('#submit-form-container');
+const displayWordCont = $('#display-word-container');
+const guessedLettersCont = $('#guessed-letters-container');
+const guessesRemainingCont = $('#remaining-guesses-container');
+const resultsCont = $('#results-container');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -120,10 +125,36 @@ const checkGameStatus = (count, display, word) => {
 
 // Function 'endGame' handles all end game activities
 const endGame = status => {
+
+    // Toggle required containers
+    toggleVisibility(submitFormCont);
+    toggleVisibility(guessedLettersCont);
+    toggleVisibility(guessesRemainingCont);
+    toggleVisibility(resultsCont);
+
+
     if (status) {
-        console.log('You Win!')
+        resultsCont.html(`
+            <p>You Win!</p>
+        `);
     } else {
-        console.log('You Lose!');
+        resultsCont.html(`
+            <p>You Lose!</p>
+        `);
+    }
+}
+
+// Function 'toggleVisibility' will flip elements from hidden to visible and vice versa
+const toggleVisibility = element => {
+
+    if (element.attr('data-vis') == 'visible') {
+        element.removeClass('visible');
+        element.addClass('hidden');
+        element.attr('data-vis', 'hidden')
+    } else {
+        element.removeClass('hidden');
+        element.addClass('visible');
+        element.attr('data-vis', 'visible');
     }
 }
 
