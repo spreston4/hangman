@@ -14,9 +14,10 @@ let guessedLetterArray = [];
 
 // HTML elements
 const displayWordEl = $('#display-word');
-const guessLetterEl = $('#guess-letter');
-const submitLetterEl = $('#submit-letter');
+const guessLetterEl = $('#guess-letter');      // Form Input (future delete)
+const submitLetterEl = $('#submit-letter');    // Form Submit Button (future delete)
 const guessedLettersEl = $('#guessed-letters');
+const guessesRemainingEl = $('#remaining-guesses');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -47,6 +48,13 @@ const renderGuesses = arr => {
     guessedLettersEl.html(`
     <p>${arr.join(' ')}</p>
 `);
+}
+
+// Function 'renderRemaining' will display number of remaining guesses to the page
+const renderRemaining = num => {
+    guessesRemainingEl.html(`
+        <p>Remaining Guesses: ${num}</p>
+    `)
 }
 
 // Function 'guessLetter' takes a letter input from the form, searches word array
@@ -83,8 +91,6 @@ const guessLetter = event => {
 
     if (!correctGuess) {
         guessCount--;
-        // console.log('Incorrect.')
-        // console.log('Guesses Remaining: ' + guessCount);
     }
 
     // Remember guessed letter
@@ -93,6 +99,7 @@ const guessLetter = event => {
     // Render to page
     renderWord(displayArray);
     renderGuesses(guessedLetterArray);
+    renderRemaining(guessCount)
 
     // Check on game status
     checkGameStatus(guessCount, displayArray, selectedWord);
@@ -101,7 +108,6 @@ const guessLetter = event => {
 // Function 'checkGameStatus' will determine if the user has reached the end of the game
 const checkGameStatus = (count, display, word) => {
 
-    console.log ('Guesses remaining: ' + count);
     // Determine if out of guesses
     if (display.join('') === word.join('')) {
         endGame(true);
