@@ -12,22 +12,13 @@ let selectedWord =[];
 let displayArray = [];
 let guessedLetterArray = [];
 
-// HTML elements
-const displayWordEl = $('#display-word');
+// HTML elements refrenced more than once
 const guessLetterEl = $('#guess-letter');      // Form Input (future delete)
 const submitLetterEl = $('#submit-letter');    // Form Submit Button (future delete)
-const guessedLettersEl = $('#guessed-letters');
-const guessesRemainingEl = $('#remaining-guesses');
-const submitFormCont = $('#submit-form-container');
 const displayWordCont = $('#display-word-container');
-const guessedLettersCont = $('#guessed-letters-container');
-const guessesRemainingCont = $('#remaining-guesses-container');
 const resultsCont = $('#results-container');
 const resetCont = $('#reset-game-container');
 const showButtonEl = $('#show-button');
-const resetButtonEl = $('#play-again');
-const welcomeCont = $('#welcome-container');
-const playButtonEl = $('#start-button');
 const contentCont = $('#content-container')
 
 // Function 'getWord' selects a random word from the 'wordPool'
@@ -44,27 +35,25 @@ const getWord = arr => {
     // Send display to page
     renderWord(displayArray);
     renderRemaining(guessCount);
-
-    console.log(selectedWord);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
 const renderWord = arr => {
-    displayWordEl.html(`
+    $('#display-word').html(`
         <p class="title is-size-1">${arr.join(' ')}</p>
     `);
 }
 
 // Function 'renderGuesses' will display guessed characters to the page
 const renderGuesses = arr => {
-    guessedLettersEl.html(`
+    $('#guessed-letters').html(`
     <h2 class="subtitle">${arr.join(' ')}</h2>
 `);
 }
 
 // Function 'renderRemaining' will display number of remaining guesses to the page
 const renderRemaining = num => {
-    guessesRemainingEl.html(`
+    $('#remaining-guesses').html(`
         <h2 class="subtitle">${num}</h2>
     `)
 }
@@ -136,7 +125,6 @@ const endGame = status => {
     toggleVisibility(resultsCont);
     toggleVisibility(resetCont);
 
-
     // Display result to page
     if (status) {
         resultsCont.html(`
@@ -168,7 +156,7 @@ const toggleVisibility = element => {
 const startGame = () => {
     
     // Show & hide correct containers
-    toggleVisibility(welcomeCont);
+    toggleVisibility($('#welcome-container'));
     toggleVisibility(displayWordCont);
     toggleVisibility(contentCont);
 
@@ -202,16 +190,11 @@ const revealWorld = () => {
     renderWord(selectedWord);
 }
 
-
-
-
-
 // --------------------------------- Run Game --------------------------------- //
 
-
 // Listener
-playButtonEl.click(startGame);
+$('#start-button').click(startGame);
 submitLetterEl.click(guessLetter);
-resetButtonEl.click(resetGame);
+$('#play-again').click(resetGame);
 showButtonEl.click(revealWorld);
 
