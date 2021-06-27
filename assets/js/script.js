@@ -28,25 +28,20 @@ const getWord = arr => {
 
     // Send display to page
     renderWord(displayArray);
-
-    
-    // convertWord(selectedWord);
 }
-
-// Function 'convertWord' takes input from 'getWord' and outputs an array to display to the page
-// const convertWord = word => {
-
-//     for (let i = 0; i < word.length; i++) {
-//         displayArray[i] = '_'
-//     }
-//     renderWord(displayArray);
-// }
 
 // Function 'renderWord' will diplay selected converted word to the page
 const renderWord = arr => {
     displayWordEl.html(`
         <p>${arr.join(' ')}</p>
-    `)
+    `);
+}
+
+// Function 'renderGuesses' will display guessed characters to the page
+const renderGuesses = arr => {
+    guessedLettersEl.html(`
+    <p>${arr.join(' ')}</p>
+`);
 }
 
 // Function 'guessLetter' takes a letter input from the form, searches word array
@@ -78,12 +73,12 @@ const guessLetter = event => {
         }
     }
 
+    // Remember guessed letter
+    guessedLetterArray.push(letter);
+
     // Render to page
     renderWord(displayArray);
-    guessedLetterArray.push(letter);
-    guessedLettersEl.html(`
-        <p>${guessedLetterArray.join(' ')}</p>
-    `);
+    renderGuesses(guessedLetterArray);
 }
 
 
