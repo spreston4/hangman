@@ -44,8 +44,6 @@ const getWord = arr => {
     renderWord(displayArray);
 
     console.log(selectedWord);
-    console.log(guessedLetterArray);
-    console.log(displayArray);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
@@ -203,6 +201,11 @@ const resetGame = () => {
     getWord(wordPool);
 }
 
+// Function 'revealWord' will show the selected word 
+const revealWorld = () => {
+    renderWord(selectedWord);
+}
+
 
 
 
@@ -214,4 +217,5 @@ const resetGame = () => {
 playButtonEl.click(startGame);
 submitLetterEl.click(guessLetter);
 resetButtonEl.click(resetGame);
+showButtonEl.click(revealWorld);
 
