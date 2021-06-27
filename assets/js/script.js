@@ -4,6 +4,9 @@ const wordPool = ['abruptly', 'length', 'subway', 'absurd', 'lucky', 'swivel', '
 // Array 'letterPool' for input validation
 const letterPool = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+// Game control variables
+let guessCount = 10;
+
 // Empty arrays
 let selectedWord =[];
 let displayArray = [];
@@ -28,6 +31,8 @@ const getWord = arr => {
 
     // Send display to page
     renderWord(displayArray);
+
+    console.log(selectedWord);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
@@ -54,6 +59,8 @@ const guessLetter = event => {
     let letter = guessLetterEl.val().toUpperCase();
     guessLetterEl.val('');
 
+    let correctGuess = null;
+
     // Check for valid character input
     if (letterPool.includes(letter) === false) {
         console.log('Please select a valid character(A-Z)')
@@ -70,7 +77,14 @@ const guessLetter = event => {
     for (let i = 0; i < selectedWord.length; i++) {
         if (letter === selectedWord[i]) {
             displayArray[i] = letter;
+            correctGuess = true;
         }
+    }
+
+    if (!correctGuess) {
+        guessCount--;
+        // console.log('Incorrect.')
+        // console.log('Guesses Remaining: ' + guessCount);
     }
 
     // Remember guessed letter
@@ -79,6 +93,32 @@ const guessLetter = event => {
     // Render to page
     renderWord(displayArray);
     renderGuesses(guessedLetterArray);
+
+    // Check on game status
+    checkGameStatus(guessCount, displayArray, selectedWord);
+}
+
+// Function 'checkGameStatus' will determine if the user has reached the end of the game
+const checkGameStatus = (count, display, word) => {
+
+    console.log ('Guesses remaining: ' + count);
+    // Determine if out of guesses
+    if (display.join('') === word.join('')) {
+        endGame(true);
+    } else if (count === 0) {
+        endGame(false);
+    } else if (count === 1) {
+        console.log('One Guess Remaining');
+    }
+}
+
+// Function 'endGame' handles all end game activities
+const endGame = status => {
+    if (status) {
+        console.log('You Win!')
+    } else {
+        console.log('You Lose!');
+    }
 }
 
 
