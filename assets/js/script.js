@@ -28,6 +28,7 @@ const showButtonEl = $('#show-button');
 const resetButtonEl = $('#play-again');
 const welcomeCont = $('#welcome-container');
 const playButtonEl = $('#start-button');
+const contentCont = $('#content-container')
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -42,6 +43,7 @@ const getWord = arr => {
 
     // Send display to page
     renderWord(displayArray);
+    renderRemaining(guessCount);
 
     console.log(selectedWord);
 }
@@ -49,21 +51,21 @@ const getWord = arr => {
 // Function 'renderWord' will diplay selected converted word to the page
 const renderWord = arr => {
     displayWordEl.html(`
-        <p>${arr.join(' ')}</p>
+        <p class="title is-size-1">${arr.join(' ')}</p>
     `);
 }
 
 // Function 'renderGuesses' will display guessed characters to the page
 const renderGuesses = arr => {
     guessedLettersEl.html(`
-    <p>${arr.join(' ')}</p>
+    <h2 class="subtitle">${arr.join(' ')}</h2>
 `);
 }
 
 // Function 'renderRemaining' will display number of remaining guesses to the page
 const renderRemaining = num => {
     guessesRemainingEl.html(`
-        <p>Remaining Guesses: ${num}</p>
+        <h2 class="subtitle">${num}</h2>
     `)
 }
 
@@ -130,9 +132,7 @@ const checkGameStatus = (count, display, word) => {
 const endGame = status => {
 
     // Toggle required containers
-    toggleVisibility(submitFormCont);
-    toggleVisibility(guessedLettersCont);
-    toggleVisibility(guessesRemainingCont);
+    toggleVisibility(contentCont)
     toggleVisibility(resultsCont);
     toggleVisibility(resetCont);
 
@@ -140,11 +140,11 @@ const endGame = status => {
     // Display result to page
     if (status) {
         resultsCont.html(`
-            <p>You Win!</p>
+        <h1 class="title">You Win!</h1>
         `);
     } else {
         resultsCont.html(`
-            <p>You Lose!</p>
+        <h1 class="title">You Lose!</h1>
         `);
         toggleVisibility(showButtonEl)
     }
@@ -170,9 +170,7 @@ const startGame = () => {
     // Show & hide correct containers
     toggleVisibility(welcomeCont);
     toggleVisibility(displayWordCont);
-    toggleVisibility(submitFormCont);
-    toggleVisibility(guessesRemainingCont);
-    toggleVisibility(guessedLettersCont);
+    toggleVisibility(contentCont);
 
     // Start Game
     getWord(wordPool);
@@ -187,9 +185,7 @@ const resetGame = () => {
     guessedLetterArray.length = 0;
     
     // Toggle correct containers
-    toggleVisibility(submitFormCont);
-    toggleVisibility(guessedLettersCont);
-    toggleVisibility(guessesRemainingCont);
+    toggleVisibility(contentCont);
     toggleVisibility(resetCont);
     toggleVisibility(resultsCont);
 

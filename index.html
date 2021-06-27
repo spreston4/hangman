@@ -4,48 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Link normalize CSS -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <!-- Link personal CSS -->
+
+    <!-- Link Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- Link Local CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Link favicon -->
+    <link rel="icon" type="image/png" href="assets/images/hangman-fav.png">
+
     <title>Hangman</title>
 </head>
 <body>
 
     <!-- Welcome container visible on Startup -->
-    <div id="welcome-container" class="visible" data-vis="visible">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum reiciendis itaque eius, rerum, iusto ipsam, totam ea mollitia ratione enim molestias aliquam iste dignissimos? Illum.</p>
-        <button id="start-button">Play!</button>
+    <div id="welcome-container" class="container visible has-background-warning" data-vis="visible">
+        
+        <section class="hero is-large is-warning container">
+            <div class="hero-body">
+                <p class="title has-text-centered is-size-1">
+                    Hangman
+                </p>
+                <p class="subtitle has-text-centered">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In impedit eos unde?
+                </p>
+            </div>
+        </section>
+        <button id="start-button" class="button is-warning is-inverted is-medium">Play!</button>
+
     </div>
-    <!-- Results container -->
-    <div id="results-container" class="hidden" data-vis="hidden"></div>
 
     <!-- Word Display -->
-    <div id="display-word-container" class="hidden" data-vis="hidden">
-        <div id="display-word"></div>
+    <div id="display-word-container" class="has-background-warning container hidden" data-vis="hidden">
+        <section class="hero is-large is-warning">
+            <div class="hero-body" id="display-word">
+           
+            </div>
+          </section>
     </div>
 
-    <!-- Take input from user -->
-    <div id="submit-form-container" class="hidden" data-vis="hidden">
-        <form>
-            <input type="text" id="guess-letter" placeholder="Pick a letter">
-            <input type="submit" id="submit-letter" value="Guess">
-        </form>
-    </div>
+    <!-- Container for Guess display and input -->
+    <div id='content-container' class='container hidden' data-vis="hidden">
+      
+        <!-- Guessed Letter Display -->
+        <div id="guessed-letters-container" class="contained">
+            <section class="section has-text-centered">
+                <h1 class="title">Previous Guesses</h1>
+                <div class="content" id="guessed-letters">
+                </div>
+              </section>
+        </div>
 
-    <!-- Guessed Letter Display -->
-    <div id="guessed-letters-container" class="hidden large" data-vis="hidden">
-        <div id="guessed-letters"></div>
-    </div>
-    
-    <!-- Remaining Guesses Display -->
-    <div id="remaining-guesses-container" class="hidden" data-vis="hidden">
-        <div id="remaining-guesses"></div>
+          <!-- Take input from user -->
+          <div id="submit-form-container" class=" contained">
+              <section class="section has-text-centered">
+                <form class="container">
+                    <input type="text" id="guess-letter" placeholder="Pick a letter" class="input is-warning is inverted is-medium">
+                    <input type="submit" id="submit-letter" value="Guess" class="button is-warning is-inverted is-medium">
+                </form>
+              </section>
+        </div>
+        
+        <!-- Remaining Guesses Display -->
+        <div id="remaining-guesses-container" class="contained">
+            <section class="section has-text-centered">
+                <h1 class="title">Remaining Guesses</h1>
+                <div class="content" id="remaining-guesses">
+                </div>
+              </section>
+           
+        </div>
     </div>
 
     <div id="reset-game-container" class="hidden" data-vis="hidden">
-        <button id="play-again">Play Again</button>
-        <button id="show-button" class="hidden" data-vis="hidden">Reveal Word</button>
+        <section id="reset-section" class="section has-text-centered visible container">
+            <div id="results-container">
+
+            </div>
+            <div class="container visible">
+                <button id="play-again" class="button is-warning is-inverted is-medium">Play Again</button>
+                <button id="show-button" class="button is-warning is-inverted is-medium hidden" data-vis="hidden">Reveal Word</button>
+            </div>
+        </section>
     </div>
     
     
