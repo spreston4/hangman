@@ -4,6 +4,8 @@ const wordPool = ['abruptly', 'length', 'subway', 'absurd', 'lucky', 'swivel', '
 let displayArray = [];
 
 const displayWordEl = $('#display-word');
+const guessLetterEl = $('#guess-letter');
+const submitLetterEl = $('#submit-letter');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -31,18 +33,27 @@ const renderWord = arr => {
     displayWordEl.html(`
         <p>${arr.join(' ')}</p>
     `)
+}
 
+// Function 'guessLetter' takes a letter input from the form, searches word array
+const guessLetter = (event) => {
+
+    event.preventDefault();
+    let letter = guessLetterEl.val();
+
+console.log('Guessed letter:')
+console.log(letter);
 }
 
 
 
 
 
-
-
-
+// --------------------------------- Run Game --------------------------------- //
 
 // Function init to load the page
 getWord(wordPool);
 
+// Listener
+submitLetterEl.click(guessLetter);
 
