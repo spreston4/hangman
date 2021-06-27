@@ -12,16 +12,21 @@
 </head>
 <body>
 
+    <!-- Welcome container visible on Startup -->
+    <div id="welcome-container" class="visible" data-vis="visible">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum reiciendis itaque eius, rerum, iusto ipsam, totam ea mollitia ratione enim molestias aliquam iste dignissimos? Illum.</p>
+        <button id="start-button">Play!</button>
+    </div>
     <!-- Results container -->
     <div id="results-container" class="hidden" data-vis="hidden"></div>
 
     <!-- Word Display -->
-    <div id="display-word-container" class="visible" data-vis="visible">
+    <div id="display-word-container" class="hidden" data-vis="hidden">
         <div id="display-word"></div>
     </div>
 
     <!-- Take input from user -->
-    <div id="submit-form-container" class="visible" data-vis="visible">
+    <div id="submit-form-container" class="hidden" data-vis="hidden">
         <form>
             <input type="text" id="guess-letter" placeholder="Pick a letter">
             <input type="submit" id="submit-letter" value="Guess">
@@ -29,13 +34,18 @@
     </div>
 
     <!-- Guessed Letter Display -->
-    <div id="guessed-letters-container" class="visible large" data-vis="visible">
+    <div id="guessed-letters-container" class="hidden large" data-vis="hidden">
         <div id="guessed-letters"></div>
     </div>
     
     <!-- Remaining Guesses Display -->
-    <div id="remaining-guesses-container" class="visible" data-vis="visible">
+    <div id="remaining-guesses-container" class="hidden" data-vis="hidden">
         <div id="remaining-guesses"></div>
+    </div>
+
+    <div id="reset-game-container" class="hidden" data-vis="hidden">
+        <button id="play-again">Play Again</button>
+        <button id="show-button" class="hidden" data-vis="hidden">Reveal Word</button>
     </div>
     
     

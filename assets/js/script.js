@@ -23,6 +23,10 @@ const displayWordCont = $('#display-word-container');
 const guessedLettersCont = $('#guessed-letters-container');
 const guessesRemainingCont = $('#remaining-guesses-container');
 const resultsCont = $('#results-container');
+const resetCont = $('#reset-game-container');
+const showButtonEl = $('#show-button');
+const welcomeCont = $('#welcome-container');
+const playButtonEl = $('#start-button');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -118,9 +122,7 @@ const checkGameStatus = (count, display, word) => {
         endGame(true);
     } else if (count === 0) {
         endGame(false);
-    } else if (count === 1) {
-        console.log('One Guess Remaining');
-    }
+    } 
 }
 
 // Function 'endGame' handles all end game activities
@@ -131,8 +133,10 @@ const endGame = status => {
     toggleVisibility(guessedLettersCont);
     toggleVisibility(guessesRemainingCont);
     toggleVisibility(resultsCont);
+    toggleVisibility(resetCont);
 
 
+    // Display result to page
     if (status) {
         resultsCont.html(`
             <p>You Win!</p>
@@ -141,6 +145,7 @@ const endGame = status => {
         resultsCont.html(`
             <p>You Lose!</p>
         `);
+        toggleVisibility(showButtonEl)
     }
 }
 
@@ -158,15 +163,28 @@ const toggleVisibility = element => {
     }
 }
 
+// Function 'startGame' clears the welcome screen and starts the game
+const startGame = () => {
+    
+    // Show & hide correct containers
+    toggleVisibility(welcomeCont);
+    toggleVisibility(displayWordCont);
+    toggleVisibility(submitFormCont);
+    toggleVisibility(guessesRemainingCont);
+    toggleVisibility(guessedLettersCont);
+
+    // Get word
+    getWord(wordPool);
+}
+
 
 
 
 
 // --------------------------------- Run Game --------------------------------- //
 
-// Function init to load the page
-getWord(wordPool);
 
 // Listener
+playButtonEl.click(startGame);
 submitLetterEl.click(guessLetter);
 
