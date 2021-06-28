@@ -58,64 +58,64 @@
     position: relative;
   }
 
-  .left-frame {
-      width: 20px;
-      height: 300px;
-      border: 10px solid black;
-      border-radius: 5px;
-      display: block;
-      position: absolute;
-      left: 50px;
-      top: -100px;
-  }
+.left-frame {
+    width: 20px;
+    height: 300px;
+    border: 10px solid black;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    left: 50px;
+    top: -100px;
+}
 
-  .top-frame {
-      width: 200px;
-      height: 20px;
-      border: 10px solid black;
-      border-radius: 5px;
-      display: block;
-      position: absolute;
-      left: 65px;
-      top: -100px;
-  }
+.top-frame {
+    width: 200px;
+    height: 20px;
+    border: 10px solid black;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    left: 65px;
+    top: -100px;
+}
 
-  .cross-frame {
-      width: 150px;
-      height: 20px;
-      border: 10px solid black;
-      background-color: black;
-      display: block;
-      position: absolute;
-      transform: rotate(-45deg);
-      left: 40px;
-      top: -50px;
-  }
+.cross-frame {
+    width: 150px;
+    height: 20px;
+    border: 10px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 40px;
+    top: -50px;
+}
 
-  .bottom-frame {
-      width: 150px;
-      height: 20px;
-      border: 10px solid black;
-      border-radius: 5px;
-      display: block;
-      position: absolute;
-      left: -15px;
-      top: 190px;
-  }
+.bottom-frame {
+    width: 150px;
+    height: 20px;
+    border: 10px solid black;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    left: -15px;
+    top: 190px;
+}
 
-  .rope {
-      width: 3px;
-      height: 123px;
-      border: 3px solid black;
-      border-radius: 5px;
-      background-color: black;
-      display: block;
-      position: absolute;
-      left: 225px;
-      top: -108px;
-  }
+.rope {
+    width: 3px;
+    height: 123px;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 225px;
+    top: -108px;
+}
 
-  .lash-one {
+.lash-one {
     width: 3px;
     height: 32px;
     border: 3px solid black;
@@ -126,9 +126,9 @@
     position: absolute;
     left: 221px;
     top: -107px;
-  }
+}
 
-  .lash-two {
+.lash-two {
     width: 3px;
     height: 32px;
     border: 3px solid black;
@@ -139,9 +139,9 @@
     position: absolute;
     left: 229px;
     top: -107px;
-  }
+}
 
-  .knot-one {
+.knot-one {
     width: 15px;
     height: 2px;
     border: 3px solid black;
@@ -152,9 +152,9 @@
     position: absolute;
     left: 221px;
     top: 0px;
-  }
+}
 
-  .knot-two {
+.knot-two {
     width: 18px;
     height: 2px;
     border: 3px solid black;
@@ -164,9 +164,9 @@
     position: absolute;
     left: 219px;
     top: 5px;
-  }
+}
 
-  .knot-three {
+.knot-three {
     width: 15px;
     height: 2px;
     border: 3px solid black;
@@ -177,9 +177,9 @@
     position: absolute;
     left: 221px;
     top: 10px;
-  }
+}
 
-  .head {
+.head {
     width: 65px;
     height: 65px;
     border: 5px solid black;
@@ -189,103 +189,158 @@
     position: absolute;
     left: 196px;
     top: -65px;
-  }
+}
 
-  .torso {
+.torso {
     width: 5px;
     height: 115px;
     border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
     left: 225px;
     top: 0px;
-  }
+}
 
-  .left-arm {
+.left-arm {
     width: 5px;
     height: 70px;
     border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
-    left: 200px;
-    top: 15px;
+    left: 225px;
+    top: 25px;
     transform: rotate(45deg);
-  }
+    animation: wave 1.5s alternate infinite ease-in-out;
+    transform-origin: right top;
+}
 
-  .right-arm {
+@keyframes wave {
+    0% {
+        transform: rotate(90deg)
+    }
+    100% {
+        transform: rotate(25deg)
+    }
+}
+
+.left-arm-stop {
     width: 5px;
     height: 70px;
     border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
-    left: 251px;
-    top: 15px;
+    left: 213px;
+    top: 25px;
+    transform: rotate(20deg);
+}
+
+.right-arm {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 225px;
+    top: 25px;
     transform: rotate(-45deg);
-  }
+    animation: wave2 1.25s alternate infinite ease-in-out;
+    transform-origin: left top;
+}
 
-  .left-leg {
+@keyframes wave2 {
+    0% {
+        transform: rotate(-90deg)
+    }
+    100% {
+        transform: rotate(-25deg)
+    }
+}
+
+.right-arm-stop {
     width: 5px;
     height: 70px;
     border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
-    left: 200px;
-    top: 103px;
-    transform: rotate(45deg);
-  }
+    left: 238px;
+    top: 25px;
+    transform: rotate(-20deg);
+}
 
-  .left-foot {
+.left-leg {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 217px;
+    top: 103px;
+    transform: rotate(15deg);
+}
+
+.left-foot {
     width: 5px;
     height: 15px;
     border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
-    left: 174px;
-    top: 149px;
-    transform: rotate(-45deg);
-  }
+    left: 200px;
+    top: 160px;
+    transform: rotate(-75deg);
+}
 
-  .right-leg {
+.right-leg {
     width: 5px;
     height: 70px;
     border: 3px solid black;
+    border-radius: 10px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 235px;
+    top: 103px;
+    transform: rotate(-15deg);
+}
+
+.right-foot {
+    width: 5px;
+    height: 15px;
+    border: 3px solid black;
+    border-radius: 10px;
     background-color: black;
     display: block;
     position: absolute;
     left: 250px;
-    top: 103px;
-    transform: rotate(-45deg);
-  }
+    top: 160px;
+    transform: rotate(75deg);
+}
 
-  .right-foot {
-    width: 5px;
+.left-eye-one {
+    width: 3px;
     height: 15px;
-    border: 3px solid black;
     background-color: black;
     display: block;
     position: absolute;
-    left: 278px;
-    top: 149px;
+    left: 215px;
+    top: -45px;
     transform: rotate(45deg);
-  }
+}
 
-  .left-eye-one {
-      width: 3px;
-      height: 15px;
-      background-color: black;
-      display: block;
-      position: absolute;
-      left: 215px;
-      top: -45px;
-      transform: rotate(45deg);
-  }
-
-  .left-eye-two {
+.left-eye-two {
     width: 3px;
     height: 15px;
     background-color: black;

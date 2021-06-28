@@ -19,7 +19,8 @@ const displayWordCont = $('#display-word-container');
 const resultsCont = $('#results-container');
 const resetCont = $('#reset-game-container');
 const showButtonEl = $('#show-button');
-const contentCont = $('#content-container')
+const contentCont = $('#content-container');
+const drawingCont = $('#hanging-man');
 
 // Function 'getWord' selects a random word from the 'wordPool'
 const getWord = arr => {
@@ -106,7 +107,7 @@ const guessLetter = event => {
     checkGameStatus(guessCount, displayArray, selectedWord);
 }
 
-// Function 'checkGameStatus' will determine if the user has reached the end of the game
+// Function 'checkGameStatus' will determine if the user has reached the end of the game & draw hanging man
 const checkGameStatus = (count, display, word) => {
 
     // Determine if out of guesses
@@ -114,7 +115,56 @@ const checkGameStatus = (count, display, word) => {
         endGame(true);
     } else if (count === 0) {
         endGame(false);
-    } 
+        drawingCont.append(`
+            <div class="right-eye-one"></div>
+            <div class="right-eye-two"></div>
+        `)
+
+        $('#arm-right').removeClass('right-arm')
+        $('#arm-right').addClass('right-arm-stop')
+
+        $('#arm-left').removeClass('left-arm')
+        $('#arm-left').addClass('left-arm-stop')
+
+    } else if (count === 1) {
+        drawingCont.append(`
+            <div class="left-eye-one"></div>
+            <div class="left-eye-two"></div>
+        `)
+    } else if (count === 2) {
+        drawingCont.append(`
+            <div class="right-foot"></div>
+        `)
+    } else if (count === 3) {
+        drawingCont.append(`
+            <div class="right-leg"></div>
+        `)
+    } else if (count === 4) {
+        drawingCont.append(`
+            <div class="left-foot"></div>
+        `)
+    } else if (count === 5) {
+        drawingCont.append(`
+            <div class="left-leg"></div>
+        `)
+    } else if (count === 6) {
+        drawingCont.append(`
+            <div id="arm-right" class="right-arm"></div>
+        `)
+    } else if (count === 7) {
+        drawingCont.append(`
+            <div id="arm-left" class="left-arm"></div>
+        `)
+    } else if (count === 8) {
+        drawingCont.append(`
+            <div class="torso"></div>
+        `)
+    } else if (count === 9) {
+        drawingCont.append(`
+            <div class="head"></div>
+        `)
+    }
+
 }
 
 // Function 'endGame' handles all end game activities
@@ -180,6 +230,23 @@ const resetGame = () => {
     // Reset HTML
     renderGuesses(guessedLetterArray);
     renderRemaining(guessCount)
+    drawingCont.html(`
+        <!-- Render on Load -->
+        <div class="left-frame"></div>
+        <div class="top-frame"></div>
+        <div class="cross-frame"></div>
+        <div class="bottom-frame"></div>
+        <div class="rope"></div>
+        <div class="lash-one"></div>
+        <div class="lash-two"></div>
+        <div class="knot-one"></div>
+        <div class="knot-two"></div>
+        <div class="knot-three"></div>
+    `)
+
+    if (showButtonEl.attr('data-vis' === 'visible')) {
+        toggleVisibility(showButtonEl);
+    }
 
     // Start Game
     getWord(wordPool);
