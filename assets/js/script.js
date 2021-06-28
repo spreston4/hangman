@@ -244,9 +244,9 @@ const resetGame = () => {
         <div class="knot-three"></div>
     `)
 
-    if (showButtonEl.attr('data-vis' === 'visible')) {
-        toggleVisibility(showButtonEl);
-    }
+    showButtonEl.attr('data-vis', 'hidden');
+    showButtonEl.removeClass('visible');
+    showButtonEl.addClass('hidden');
 
     // Start Game
     getWord(wordPool);
