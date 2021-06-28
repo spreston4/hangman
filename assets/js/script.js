@@ -36,6 +36,8 @@ const getWord = arr => {
     // Send display to page
     renderWord(displayArray);
     renderRemaining(guessCount);
+
+    console.log(selectedWord);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
@@ -69,7 +71,7 @@ const guessLetter = event => {
     let letter = guessLetterEl.val().toUpperCase();
     guessLetterEl.val('');
 
-    let correctGuess = null;
+    let correctGuess = false;
 
     // Check for valid character input
     if (letterPool.includes(letter) === false) {
@@ -104,11 +106,11 @@ const guessLetter = event => {
     renderRemaining(guessCount)
 
     // Check on game status
-    checkGameStatus(guessCount, displayArray, selectedWord);
+    checkGameStatus(guessCount, displayArray, selectedWord, correctGuess);
 }
 
 // Function 'checkGameStatus' will determine if the user has reached the end of the game & draw hanging man
-const checkGameStatus = (count, display, word) => {
+const checkGameStatus = (count, display, word, guess) => {
 
     // Determine if out of guesses
     if (display.join('') === word.join('')) {
@@ -126,45 +128,44 @@ const checkGameStatus = (count, display, word) => {
         $('#arm-left').removeClass('left-arm')
         $('#arm-left').addClass('left-arm-stop')
 
-    } else if (count === 1) {
+    } else if (count === 1 && !guess) {
         drawingCont.append(`
             <div class="left-eye-one"></div>
             <div class="left-eye-two"></div>
         `)
-    } else if (count === 2) {
+    } else if (count === 2 && !guess) {
         drawingCont.append(`
             <div class="right-foot"></div>
         `)
-    } else if (count === 3) {
+    } else if (count === 3 && !guess) {
         drawingCont.append(`
             <div class="right-leg"></div>
         `)
-    } else if (count === 4) {
+    } else if (count === 4 && !guess) {
         drawingCont.append(`
             <div class="left-foot"></div>
         `)
-    } else if (count === 5) {
+    } else if (count === 5 && !guess) {
         drawingCont.append(`
             <div class="left-leg"></div>
         `)
-    } else if (count === 6) {
+    } else if (count === 6 && !guess) {
         drawingCont.append(`
             <div id="arm-right" class="right-arm"></div>
         `)
-    } else if (count === 7) {
+    } else if (count === 7 && !guess) {
         drawingCont.append(`
             <div id="arm-left" class="left-arm"></div>
         `)
-    } else if (count === 8) {
+    } else if (count === 8 && !guess) {
         drawingCont.append(`
             <div class="torso"></div>
         `)
-    } else if (count === 9) {
+    } else if (count === 9 && !guess) {
         drawingCont.append(`
             <div class="head"></div>
         `)
     }
-
 }
 
 // Function 'endGame' handles all end game activities
