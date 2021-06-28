@@ -36,8 +36,6 @@ const getWord = arr => {
     // Send display to page
     renderWord(displayArray);
     renderRemaining(guessCount);
-
-    console.log(selectedWord);
 }
 
 // Function 'renderWord' will diplay selected converted word to the page
