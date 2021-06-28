@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+  }
 
 .hidden {
     display: none;
@@ -41,4 +44,278 @@
 #results-container {
     margin-bottom: 20px;
 }
+
+#game-display {
+    display: flex;
+}
+
+/* CSS for stick figure man */
+
+.wrapper {
+    width: 300px;
+    height: 100px;
+    display: block;
+    position: relative;
+  }
+
+  .left-frame {
+      width: 20px;
+      height: 300px;
+      border: 10px solid black;
+      border-radius: 5px;
+      display: block;
+      position: absolute;
+      left: 50px;
+      top: -100px;
+  }
+
+  .top-frame {
+      width: 200px;
+      height: 20px;
+      border: 10px solid black;
+      border-radius: 5px;
+      display: block;
+      position: absolute;
+      left: 65px;
+      top: -100px;
+  }
+
+  .cross-frame {
+      width: 150px;
+      height: 20px;
+      border: 10px solid black;
+      background-color: black;
+      display: block;
+      position: absolute;
+      transform: rotate(-45deg);
+      left: 40px;
+      top: -50px;
+  }
+
+  .bottom-frame {
+      width: 150px;
+      height: 20px;
+      border: 10px solid black;
+      border-radius: 5px;
+      display: block;
+      position: absolute;
+      left: -15px;
+      top: 190px;
+  }
+
+  .rope {
+      width: 3px;
+      height: 123px;
+      border: 3px solid black;
+      border-radius: 5px;
+      background-color: black;
+      display: block;
+      position: absolute;
+      left: 225px;
+      top: -108px;
+  }
+
+  .lash-one {
+    width: 3px;
+    height: 32px;
+    border: 3px solid black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 221px;
+    top: -107px;
+  }
+
+  .lash-two {
+    width: 3px;
+    height: 32px;
+    border: 3px solid black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 229px;
+    top: -107px;
+  }
+
+  .knot-one {
+    width: 15px;
+    height: 2px;
+    border: 3px solid black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 221px;
+    top: 0px;
+  }
+
+  .knot-two {
+    width: 18px;
+    height: 2px;
+    border: 3px solid black;
+    border-radius:5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 219px;
+    top: 5px;
+  }
+
+  .knot-three {
+    width: 15px;
+    height: 2px;
+    border: 3px solid black;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 221px;
+    top: 10px;
+  }
+
+  .head {
+    width: 65px;
+    height: 65px;
+    border: 5px solid black;
+    border-radius: 50%;
+    background-color: white;
+    display: block;
+    position: absolute;
+    left: 196px;
+    top: -65px;
+  }
+
+  .torso {
+    width: 5px;
+    height: 115px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 225px;
+    top: 0px;
+  }
+
+  .left-arm {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 200px;
+    top: 15px;
+    transform: rotate(45deg);
+  }
+
+  .right-arm {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 251px;
+    top: 15px;
+    transform: rotate(-45deg);
+  }
+
+  .left-leg {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 200px;
+    top: 103px;
+    transform: rotate(45deg);
+  }
+
+  .left-foot {
+    width: 5px;
+    height: 15px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 174px;
+    top: 149px;
+    transform: rotate(-45deg);
+  }
+
+  .right-leg {
+    width: 5px;
+    height: 70px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 250px;
+    top: 103px;
+    transform: rotate(-45deg);
+  }
+
+  .right-foot {
+    width: 5px;
+    height: 15px;
+    border: 3px solid black;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 278px;
+    top: 149px;
+    transform: rotate(45deg);
+  }
+
+  .left-eye-one {
+      width: 3px;
+      height: 15px;
+      background-color: black;
+      display: block;
+      position: absolute;
+      left: 215px;
+      top: -45px;
+      transform: rotate(45deg);
+  }
+
+  .left-eye-two {
+    width: 3px;
+    height: 15px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 215px;
+    top: -45px;
+    transform: rotate(-45deg);
+}
+
+.right-eye-one {
+    width: 3px;
+    height: 15px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 238px;
+    top: -45px;
+    transform: rotate(45deg);
+}
+
+.right-eye-two {
+    width: 3px;
+    height: 15px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    left: 238px;
+    top: -45px;
+    transform: rotate(-45deg);
+}
+
 
