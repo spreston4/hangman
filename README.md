@@ -15,8 +15,9 @@ Built in Visual Studio with:
 
 ## To-Dos:
 * Replace form input with virtual keyboard input method
-* Add drawing of the 'hangman' to update with incorrect guesses
+* ~~Add drawing of the 'hangman' to update with incorrect guesses~~
 * Add functionality to pick category
+* Mobile formatting
 
 ## How to
 When the application is loaded, the user is presented with the following screen. Press the 'Play!' button to begin!
