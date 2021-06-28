@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-  }
+}
 
 .hidden {
     display: none;
@@ -56,7 +56,7 @@
     height: 100px;
     display: block;
     position: relative;
-  }
+}
 
 .left-frame {
     width: 20px;

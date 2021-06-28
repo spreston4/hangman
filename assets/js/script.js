@@ -30,7 +30,7 @@ const getWord = arr => {
 
     // Convert selected word to a hidden display
     for (let i = 0; i < selectedWord.length; i++) {
-        displayArray[i] = '_'
+        displayArray[i] = '_';
     }
 
     // Send display to page
@@ -49,7 +49,7 @@ const renderWord = arr => {
 const renderGuesses = arr => {
     $('#guessed-letters').html(`
     <h2 class="subtitle">${arr.join(' ')}</h2>
-`);
+    `);
 }
 
 // Function 'renderRemaining' will display number of remaining guesses to the page
@@ -69,6 +69,7 @@ const guessLetter = event => {
     let letter = guessLetterEl.val().toUpperCase();
     guessLetterEl.val('');
 
+    // Set value for gameCheck
     let correctGuess = false;
 
     // Check for valid character input
@@ -243,6 +244,7 @@ const resetGame = () => {
         <div class="knot-three"></div>
     `)
 
+    // Hard reset of 'showButtonEl' as this is not always toggled
     showButtonEl.attr('data-vis', 'hidden');
     showButtonEl.removeClass('visible');
     showButtonEl.addClass('hidden');
@@ -258,7 +260,7 @@ const revealWorld = () => {
 
 // --------------------------------- Run Game --------------------------------- //
 
-// Listener
+// Listeners
 $('#start-button').click(startGame);
 submitLetterEl.click(guessLetter);
 $('#play-again').click(resetGame);
